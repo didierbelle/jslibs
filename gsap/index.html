@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gsap Tester</title>
+</head>
+<style>
+    :root{
+        --principal-color: #09814A;
+        --secondary-color: rgb(211, 235, 0);
+    }
+    .principal-text-family{
+        font-family: 'Bamboo Gothic' ,'Courier New', Courier, monospace;
+    }
+    .principal-text-color{
+        color: var(--principal-color);
+    }
+    .secondary-text-color{
+        color: var(--secondary-color);
+    }
+    .principal-font{
+        font-family: 'Bahnschrift', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
+    .secondary-font{
+        font-family: 'Consolas', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body{
+        background-color: var(--principal-color);
+    }
+    header{
+        background: url("img/saisons/pexels-aurélien-l\'hoost-14153067.jpg");
+        /* filter: brightness(90%); */
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+    header nav{
+        /* background-color: yellow; */
+        height: 15vh;
+        padding: 0 10%;
+        display: flex;
+        justify-content:space-between;
+        align-items: center;
+    }
+    nav h1{
+        letter-spacing: -3px;
+        font-size: 3.5em;
+    }
+    nav ul{
+        list-style: none;
+        width: 40%;
+        /* background-color: red; */
+        display: flex;
+        justify-content: space-evenly;
+    }
+    nav li{
+        display: inline-block;
+    }
+    nav li a{
+        text-decoration: none;
+        color: #000;
+    }
+
+    .banner-cta{
+        /* background-color: aqua; */
+        height: 85vh;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        padding-top: 10%;
+    }
+    .banner-cta p{
+        padding-bottom: 35px;
+    }
+    button{
+        font-family: inherit;
+        border-radius: 2%;
+    }
+    .banner-cta button{
+        padding: 25px;
+        cursor:pointer;
+        background-color: var(--principal-color);
+        color: whitesmoke;
+        border: 1px solid var(--principal-color);
+    }
+    .banner-cta button:hover{
+        transition: all .5s ease-in;
+        box-shadow: 3px 3px 1px var(--secondary-color);
+    }
+    
+</style>
+<body class="secondary-font">
+    <header>
+        <nav>
+            <h1 class="principal-font">Trip Time.</h1>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Plus...</a></li>
+            </ul>
+        </nav>
+        <div class="banner-cta">
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque, at.</p>
+            <button>RESERVER</button>
+        </div>
+    </header>
+    <main>
+        lorem10000000
+    </main>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+<script>
+
+    const body = document.body;
+    console.log(body);
+    const header = body.removeChild(document.querySelector("header"));
+    const main = body.removeChild(document.querySelector("main"));
+
+    setInterval(addBodyContain(), 10000);
+
+    function addBodyContain(){
+        body.appendChild(header)
+        body.appendChild(main)
+    }
+    
+</script>
+</html>

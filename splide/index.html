@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPLIDE TEST</title>
+    <link rel="stylesheet" href="splide/dist/css/splide.min.css">
+    <script src="splide/dist/js/splide.min.js"></script>
+</head>
+<style>
+    *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    body{
+        background: #eeeeee3a;
+    }
+
+    .splide{
+        height: 80vh;
+        /* width: 50vw; */
+        overflow: hidden;
+    }
+
+    .splide:first-child img{
+        height: 100vh;
+        width: 100%;
+    }
+
+    .splide:last-child img{
+        height: 50vh;
+        width: 70vw;
+    }
+
+    section{
+        display: flex;
+        height: 1000px;
+    }
+
+    section div{
+        padding: 10px;
+    }
+
+    section > div:first-child{
+        width: 30vw;
+        /* height: 1000px; */
+        background-color: rgb(226, 224, 228);
+        /* box-shadow: 2px 2px 2px 1px rgba(41, 83, 124, 0.3); */
+    }
+
+    section > div:last-child{
+        width: 70vw;
+        /* height: 1000px; */
+        background-color: rgb(226, 0, 228);
+    }
+
+</style>
+<body>
+    <div class="splide" data-splide='{"autoplay":"true", "rewind":"true", "rewindSpeed": 1500, "lazyLoad":"true"}' role="group" aria-label="Splide Basic HTML Example">
+        <div class="splide__track">
+              <ul class="splide__list">
+                  <li class="splide__slide"><img data-splide-lazy="img/1.jpg" alt=""> </li>
+                  <li class="splide__slide"><img data-splide-lazy="img/2.jpg" alt=""></li>
+                  <li class="splide__slide"><img data-splide-lazy="img/3.jpg" alt=""></li>
+              </ul>
+        </div>
+    </div>
+
+    <section>
+        <div>
+            
+
+            <h2><a href="second.html">HDAP</a></h2><br>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur maxime qui earum vero voluptas ex id reiciendis suscipit ab? Veritatis, fuga. Quod minima unde vero culpa delectus odio nobis consequatur nostrum nulla quos laudantium facere accusantium error deleniti voluptatibus quaerat dicta, neque cum soluta quam maiores sapiente fuga ea tempore! Eligendi, rem amet? Quibusdam, eveniet provident impedit neque voluptatem unde odit nihil quas veritatis, nobis et accusantium dolorum aperiam illo natus doloremque deserunt sit ut! Impedit nam tempora adipisci eius eligendi laboriosam ipsum necessitatibus itaque voluptatum qui, dolores a est rem asperiores cum beatae dolore quaerat quia illo! Maiores rem perspiciatis expedita temporibus impedit voluptatem sed modi consequuntur odio, voluptate magni natus sapiente animi, cupiditate porro voluptates magnam eum corporis saepe quae quas. Nesciunt voluptas, possimus veniam necessitatibus fuga voluptatibus culpa est quis suscipit asperiores placeat quae molestiae minima voluptates amet non ipsam labore maiores? Officiis, cupiditate nihil laudantium ipsa, neque delectus optio quaerat amet saepe expedita eum recusandae possimus, nesciunt nostrum. Aut alias dignissimos consequatur dolor cupiditate laboriosam. Voluptates officia nam nihil ipsa, cum minus explicabo. Nobis illum porro necessitatibus laboriosam libero vero sint animi vel assumenda, cupiditate blanditiis natus dolore voluptate repellat id rerum nostrum, voluptatibus repudiandae. Delectus.</p>
+        </div>
+        
+        <div class="splide" data-splide='{"rewind": "true", "rewindSpeed":500}' role="group" aria-label="Splide Basic HTML Example">
+            <div class="splide__track">
+                  <ul class="splide__list">
+                      <li class="splide__slide"><img src="img/v1.jpg" alt=""> </li>
+                      <li class="splide__slide"><img src="img/v2.jpg" alt=""></li>
+                      <li class="splide__slide"><img src="img/v3.jpg" alt=""></li>
+                      <li class="splide__slide"><img src="img/v4.jpg" alt=""></li>
+                      <li class="splide__slide"><img src="img/v5.jpg" alt=""></li>
+                      <li class="splide__slide"><img src="img/v6.jpg" alt=""></li>
+                  </ul>
+            </div>
+        </div>
+    </section>
+</body>
+<script>
+    // import Splide from '@splidejs/splide';
+    const elems = document.querySelectorAll(".splide");
+    for (let i = 0; i < elems.length; i++) {
+        new Splide(elems[i]).mount();
+    }
+    
+</script>
+</html>
