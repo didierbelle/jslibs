@@ -5,10 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gsap Tester</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
+    
 </head>
 <style>
     :root{
-        --principal-color: #309b6b;
+        /* --principal-color: #309b6b; */
+        --principal-color: #5b8f78;
         --secondary-color: rgb(243, 184, 32);
     }
     .principal-text-family{
@@ -31,10 +34,25 @@
         padding: 0;
         box-sizing: border-box;
         scroll-behavior: smooth;
-
     }
     body{
         background-color: var(--principal-color);
+        overflow-x: hidden;
+    }
+    #mouse-suiveur{
+        position: absolute;
+        border-radius: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        pointer-events: none;
+        left: -100px;
+        top: 50%;
+        mix-blend-mode: difference; /*for dark and light modes*/
+        background-color: var(--secondary-color);
+        z-index: 10000;
+        /* border: 2px solid var(--secondary-color); */
+        height: 100px;
+        width: 100px;
+        transition: all 300ms ease-out;
     }
     header{
         background: url("img/saisons/pexels-aurélien-l\'hoost-14153067.jpg");
@@ -45,13 +63,14 @@
     }
     header nav{
         /* background-color: yellow; */
+        /* position: fixed; */
         height: 25vh;
         padding: 0 10%;
         display: flex;
         justify-content:space-between;
         align-items: center;
     }
-    nav h1{
+    h1{
         letter-spacing: -3px;
         font-size: 3.5em;
     }
@@ -72,7 +91,7 @@
 
     .banner-cta{
         /* background-color: aqua; */
-        height: 85vh;
+        /* height: 85vh; */
         display: flex;
         align-items: center;
         flex-direction: column;
@@ -95,49 +114,173 @@
     }
     .banner-cta button:hover{
         transition: all .5s ease-in;
-        box-shadow: 3px 3px 1px var(--secondary-color);
+        box-shadow: 3px 3px 0px var(--secondary-color);
+    }
+    #slider{
+        background-color: rgb(216, 216, 216);
+        display: flex;
+        padding: .5%;
+        gap: 25px;
+        overflow-x: initial;
+    }
+    #slider div{
+        display: flex;
+        gap: 15px;
+        padding: 1% 0.5%;
+    }
+    #slider div img:hover{
+        transition: all .3s ease;
+        box-shadow: 2px 3px 0 var(--secondary-color);
+    }
+    #slider div p{
+        text-align: justify;
+    }
+    main {
+        display: flex;
+        flex-direction: column;
     }
     main div{
         height: 100vh;
+        padding: 2%;
+    }
+    #vid{
+        /* background-color: red; */
+        height: 100vh;
+        padding: 2%;
+    }
+    main div img, main div video{
+        background-size: cover;
+        width: 100%;
+        height: 100%;
+    }
+    #back-up{
+        display: none;
+        position: fixed;
+        border-radius: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        cursor: pointer;
+        left: 90vw;
+        top: 90vh;
+        height: 100px;
+        width: 100px;
+        /* border: 2px solid var(--secondary-color); */
+        background-color: black;
+        z-index: 10000;
+        /* transition: all .2s ease; */
+    }
+    #back-up img{
+        height: 100px;
+        width: 100px;
+        filter: grayscale();
+        border-radius: 50%;
     }
     
 </style>
 <body class="secondary-font">
+    <div id="mouse-suiveur"></div>
     <header>
         <nav>
-            <h1 class="principal-font">Trip Time.</h1>
+            <h1 class="principal-font" id="title">Trip Time.</h1>
             <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#plus">Plus...</a></li>
+                <li><a href="#home" >Home</a></li>
+                <li><a href="#about" >About</a></li>
+                <li><a href="#plus" >Plus...</a></li>
             </ul>
         </nav>
         <div class="banner-cta">
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque, at.</p>
+            <h2>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque, at.</h2>
             <button>RESERVER</button>
         </div>
     </header>
-    <main>
-        lorem10000000
-        <div id="home"></div>
-        <div id="about"></div>
-        <div id="plus"></div>
+
+
+    <section id="slider" class="splide">
+        <div class="splide__track">
+            <div class="splide__list">
+                <div class="splide__slide">
+                    <img src="img/trip/pins-verts.jpg" loading="lazy" alt="" height="150" width="100">
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Delectus laudantium quae dolor faciliiae incidunt. Vel velit dicta nemo</p>
+                </div><hr>
+                <div class="splide__slide">
+                    <img src="img/saisons/pexels-paul-g-13615314.jpg" loading="lazy" alt="" height="150" width="100">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis, placeat.</p>
+                </div><hr>
+                <div class="splide__slide">
+                    <img src="img/trip/pexels-deva-darshan-1173777.jpg" loading="lazy" alt="" height="150" width="100">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis, placeat.</p>
+                </div><hr>
+                <div class="splide__slide">
+                    <img src="img/trip/pins-verts.jpg" loading="lazy" alt="" height="150" width="100">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis, placeat.</p>
+                </div><hr>
+                <div class="splide__slide">
+                    <img src="img/saisons/pexels-pixabay-33109.jpg" loading="lazy" alt="" height="150" width="100">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis, placeat.</p>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <main> 
+        <div id="home">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quasi voluptatum facilis necessitatibus maiores magnam eveniet repellendus dicta accusantium et fugiat minima, voluptatem iste natus vero explicabo consequuntur doloremque ratione inventore qui quam maxime. Repudiandae doloribus adipisci ipsa sapiente accusamus iusto sequi vel similique beatae pariatur tempora rem eligendi consequatur neque delectus nisi, nulla provident earum deleniti, error cupiditate libero. Culpa ipsum mollitia dolorum dolorem accusamus optio id inventore repellat, amet assumenda, consequuntur quis velit nemo qui, at quo temporibus minus aperiam dolore iste consequatur nesciunt. Laboriosam dolorem repudiandae culpa inventore unde. Sed a accusamus corporis modi alias optio minus deserunt quos eum, itaque cum nulla, obcaecati vero doloremque eaque deleniti non, laborum dolor ut architecto maxime eius eveniet qui quas! Delectus minima amet autem libero similique quam adipisci dolorum, totam mollitia rerum placeat, earum unde numquam illo! Praesentium explicabo, voluptatum aspernatur sed nisi quam corrupti, nemo asperiores inventore quis quisquam, ea suscipit libero et placeat culpa tenetur cum alias fuga? Officia quod ullam est atque maiores amet, nisi pariatur error, sequi dicta rem accusamus ex obcaecati eaque eos deserunt quas dolores molestias, maxime reprehenderit laudantium. Unde cupiditate voluptatibus nihil. Vel commodi enim quia adipisci, error doloribus aliquam dolores iste?</div><hr>
+        <div id="about">
+            <img src="img/pexels-boris-ulzibat-1731660.jpg" alt="" loading="lazy">
+        </div><hr>
+        <div id="vid">
+            <h1 style="color: #fff; text-align: right; margin-bottom: -50px;">HAVE A LOOK ON THE VIDEO TRIP. </h1>
+            <video src="img/Pexels Videos 3888.mp4" autoplay loop></video>
+        </div><hr>
+        <div id="plus">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam rem corrupti nam expedita animi aperiam molestias vitae, optio nemo reprehenderit neque ipsa officia illum odio possimus, quam commodi eligendi vel voluptatibus iure? Quae facilis quis ipsa iure ipsam. Cum, atque. Aspernatur unde dolor doloremque voluptatum expedita, consectetur dolore numquam ut minus fugit. Voluptates eaque quam consequuntur sed inventore expedita impedit autem eos, asperiores delectus natus nisi recusandae laudantium fugiat! Temporibus accusantium officia veniam voluptas quod ut. Similique nostrum fugit necessitatibus ratione labore aliquid. Dolorem perferendis accusantium adipisci at facilis libero enim eum consectetur, voluptatibus doloribus natus, fugit quidem vel delectus veniam. Assumenda inventore qui est recusandae ab modi. Fugiat quidem earum eveniet, alias exercitationem porro itaque quasi voluptatem nulla incidunt numquam fugit! Blanditiis facilis facere fuga omnis a quod, beatae voluptates necessitatibus modi. Nobis, fuga. Impedit odit error tempore ex voluptate similique consectetur sint? Minima id deserunt excepturi quo enim eius!</div>
     </main>
+    <div id="back-up">
+        <a href="#title"><img src="img/icons/up-arrow.gif" alt=""></a>
+    </div>
+    <footer>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt distinctio doloremque eos. Ex nesciunt, autem quod vitae tenetur enim minus distinctio, corrupti, tempora aliquam dolorem itaque voluptate earum dolor iusto? Voluptate, quaerat et culpa vitae possimus ratione sequi eius repellat ducimus dignissimos odio ad fugiat veniam nam, delectus dolorem. Reprehenderit?
+    </footer>
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
 <script>
-
-    const body = document.body;
-    console.log(body);
-    const header = body.removeChild(document.querySelector("header"));
-    const main = body.removeChild(document.querySelector("main"));
-
-    setInterval(addBodyContain(), 10000);
-
-    function addBodyContain(){
-        body.appendChild(header)
-        body.appendChild(main)
-    }
     
+    // afficher la div back-up
+    const backUp = document.querySelector("#back-up")
+    const nav = document.querySelector("nav")
+    window.addEventListener("scroll", ()=>{
+        const navVisible = nav.offsetHeight >= window.pageYOffset;
+        console.log(backUp.style);
+        backUp.style.display = 'none'
+        if (!navVisible) {
+            backUp.style.display = ''
+        }
+    })
+
+
+    // suivi du curseur
+    const curseur = document.querySelector("#mouse-suiveur")
+        document.body.addEventListener("mouseover", function(e){
+            curseur.style.left = e.clientX + "px";
+            curseur.style.top = e.clientY + "px";
+        }
+    )
+
+    // const sectionSlider = document.querySelector("#slider")
+    // gsap.to(sectionSlider, 
+    //     { x : "110vw", repeat: -1, duration: 5, ease: "ease-in"}
+    // )
+
+
+    var splide = new Splide( '.splide', {
+        autoplay: true,
+        rewind: true,
+        rewindSpeed: 1000,
+        padding: '5rem',
+        arrows: false,
+        wheel: true
+    } );
+
+    splide.mount();
+
 </script>
 </html>
