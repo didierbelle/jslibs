@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gsap Tester</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
+    
+</head>
+<style>
+    :root{
+        /* --principal-color: #309b6b; */
+        --principal-color: #5b8f78;
+        --secondary-color: rgb(243, 184, 32);
+    }
+    .principal-text-family{
+        font-family: 'Bamboo Gothic' ,'Courier New', Courier, monospace;
+    }
+    .principal-text-color{
+        color: var(--principal-color);
+    }
+    .secondary-text-color{
+        color: var(--secondary-color);
+    }
+    .principal-font{
+        font-family: 'Bahnschrift', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
+    .secondary-font{
+        font-family: 'Consolas', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        scroll-behavior: smooth;
+    }
+    body{
+        background-color: var(--principal-color);
+        overflow-x: hidden;
+    }
+    #mouse-suiveur{
+        position: absolute;
+        border-radius: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        pointer-events: none;
+        left: -100px;
+        top: 50%;
+        mix-blend-mode: difference; /*for dark and light modes*/
+        background-color: var(--secondary-color);
+        z-index: 10000;
+        /* border: 2px solid var(--secondary-color); */
+        height: 100px;
+        width: 100px;
+        transition: all 300ms ease-out;
+    }
+    header{
+        background: url("img/saisons/pexels-aurélien-l\'hoost-14153067.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        /* filter: brightness(90%); */
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+    header nav{
+        /* background-color: yellow; */
+        /* position: fixed; */
+        height: 25vh;
+        padding: 0 10%;
+        display: flex;
+        justify-content:space-between;
+        align-items: center;
+    }
+    h1{
+        letter-spacing: -3px;
+        font-size: 3.5em;
+    }
+    h2{
+        text-shadow: 2px 2px 0 var(--principal-color);
+    }
+    nav ul{
+        list-style: none;
+        width: 40%;
+        /* background-color: red; */
+        display: flex;
+        justify-content: space-evenly;
+    }
+    nav li{
+        display: inline-block;
+        font-size: larger;
+    }
+    nav li a{
+        text-decoration: none;
+        color: #000;
+    }
+    nav button{
+        padding: 0 1vw;
+        box-shadow: 1px 1px 0 var(--principal-color);
+    }
+    .banner-cta{
+        /* background-color: aqua; */
+        height: 85vh;
+        /* width: 40vw; */
+        /* margin: 0 auto; */
+        display: flex;
+        align-items:center;
+        /* justify-content: flex-start; */
+        flex-direction: column;
+        padding-top: 10%;
+        color: white;
+    }
+    .banner-cta p{
+        padding-bottom: 35px;
+    }
+    button{
+        font-family: inherit;
+        border-radius: 2%;
+        cursor:pointer;
+        /* padding: 25px; */
+    }
+    .banner-cta button{
+        padding: 25px;
+        /* width: 10vw; */
+        font-size: large;
+        background-color: var(--principal-color);
+        color: whitesmoke;
+        border: 1px solid var(--principal-color);
+    }
+    .banner-cta button:hover{
+        transition: all .5s ease-in;
+        box-shadow: 3px 3px 0px var(--secondary-color);
+    }
+    #slider{
+        background-color: rgb(216, 216, 216);
+        display: flex;
+        padding: .5%;
+        gap: 25px;
+        overflow-x: initial;
+    }
+    #slider div{
+        display: flex;
+        gap: 15px;
+        padding: 1% 0.5%;
+    }
+    #slider div img:hover{
+        transition: all .3s ease;
+        box-shadow: 2px 3px 0 var(--secondary-color);
+    }
+    #slider div p{
+        text-align: justify;
+    }
+    main {
+        background: rgba(255, 255, 255, 0.9);
+        display: flex;
+        flex-direction: column;
+    }
+    .grid-container{
+        height: 84vh;
+        box-shadow: -4px 4px 0px var(--principal-color);
+        background-color: var(--secondary-color);
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        grid-auto-rows: minmax(100px, auto);
+    }
+    .grid-container div{
+        height: 78vh;
+        background: url("img/trip/pexels-deva-darshan-1173777.jpg");
+        /* height: 1cm; */
+    }
+    .grid-container > div + div{
+        background: url("img/biodiversite/tronc.jpg") center no-repeat;
+        background-size: cover;
+    }
+    .grid-container div:last-child{
+        background: url("img/biodiversite/monkey.jpg") center no-repeat;
+        background-size: cover;
+    }
+    main div{
+        height: 100vh;
+        padding: 2%;
+    }
+    #vid{
+        /* background-color: red; */
+        height: 100vh;
+        display: flex;
+        /* padding: 2%;  */
+    }
+    main div img{
+        background-size: cover;
+        width: 100%;
+        height: 100%;
+    }
+    main div p{
+        text-align: justify;
+    }
+    #back-up{
+        /* display: none; */
+        position: fixed;
+        border-radius: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        cursor: pointer;
+        left: 90vw;
+        top: 90vh;
+        height: 100px;
+        width: 100px;
+        /* border: 2px solid var(--secondary-color); */
+        background-color: black;
+        z-index: 10000;
+        background: url("img/icons/up-arrow.gif") no-repeat center;
+        background-size: contain;
+        filter: invert();
+        /* transition: all .2s ease; */
+    }
+    #back-up img{
+        height: 100px;
+        width: 100px;
+        filter: grayscale();
+        border-radius: 50%;
+    }
+    footer{
+        /* background: url("img/icons/up-arrow.gif") no-repeat center; */
+        /* background-size: contain; */
+        /* position:sticky; */
+        /* top: 100vh; */
+        /* z-index: 100000; */
+        color: whitesmoke;
+        font-size: large;
+        text-align: justify;
+        padding: 5%;
+    }
+    
+</style>
+<body class="secondary-font">
+    <div id="mouse-suiveur"></div>
+    <header>
+        <nav>
+            <h1 class="principal-font" id="title">Trip Time.</h1>
+            <ul>
+                <li><a href="#gallery" >Gallery</a></li>
+                <li><a href="#about" >Slides</a></li>
+                <li><a href="#plus" >Details</a></li>
+                <button>RESERVER</button>
+            </ul>
+        </nav>
+        <div class="banner-cta">
+            <button>RESERVER</button>
+        </div>
+    </header>
+
+
+    <section id="slider" class="splide">
+        <div class="splide__track">
+            <div class="splide__list">
+                <div class="splide__slide">
+                    <img src="img/trip/pins-verts.jpg" loading="lazy" alt="" height="150" width="100">
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Delectus laudantium quae dolor faciliiae incidunt. Vel velit dicta nemo</p>
+                </div><hr>
+                <div class="splide__slide">
+                    <img src="img/saisons/pexels-paul-g-13615314.jpg" loading="lazy" alt="" height="150" width="100">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis, placeat.</p>
+                </div><hr>
+                <div class="splide__slide">
+                    <img src="img/trip/pexels-deva-darshan-1173777.jpg" loading="lazy" alt="" height="150" width="100">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis, placeat.</p>
+                </div><hr>
+                <div class="splide__slide">
+                    <img src="img/trip/pins-verts.jpg" loading="lazy" alt="" height="150" width="100">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis, placeat.</p>
+                </div><hr>
+                <div class="splide__slide">
+                    <img src="img/saisons/pexels-pixabay-33109.jpg" loading="lazy" alt="" height="150" width="100">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis, placeat.</p>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <main> 
+        <div id="gallery">
+            <marquee behavior="" direction="right"> <h1 style="text-align: right; " class="secondary-text-color">HAVE A LOOK ON OUR TRIP. HAVE A LOOK ON OUR TRIP. HAVE A LOOK ON OUR TRIP. HAVE A LOOK ON OUR TRIP. </h1></marquee>
+            <div class="grid-container">
+                <div class=""></div>
+                <div class=""></div>
+                <div class=""></div>
+            </div>
+            <div></div>
+        </div><hr>
+        <div id="about">
+            <img src="img/pexels-boris-ulzibat-1731660.jpg" alt="" loading="lazy">
+        </div><hr>
+        <div id="vid">
+            <video src="img/Pexels Videos 3888.mp4" controls loop></video>
+            <div>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Debitis rem non illum amet, veniam impedit molestiae distinctio atque corporis explicabo quam reprehenderit assumenda id. Voluptas quaerat delectus amet mollitia reprehenderit nam, expedita, excepturi corporis, hic ab dolorem! Culpa, consequuntur sed eum magni ad officiis quam nobis harum quae laborum, ullam non, eaque aut dolores sint. Accusamus quis praesentium omnis, corporis cupiditate voluptates quidem nisi vel fuga dolore? Doloribus alias magni at aspernatur quae. Necessitatibus, velit et facere expedita labore perferendis iusto illo eos repellendus, perspiciatis est nulla ea quos a qui error? Et assumenda praesentium dolore mollitia, soluta iusto laudantium.
+            </div>
+        </div><hr>
+        <div id="plus">
+            <h1 style="" class="secondary-text-color"> HAVE A LOOK ON OUR TRIP. </h1>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam rem corrupti nam expedita animi aperiam molestias vitae, optio nemo reprehenderit neque ipsa officia illum odio possimus, quam commodi eligendi vel voluptatibus iure? Quae facilis quis ipsa iure ipsam. Cum, atque. Aspernatur unde dolor doloremque voluptatum expedita, consectetur dolore numquam ut minus fugit. Voluptates eaque quam consequuntur sed inventore expedita impedit autem eos, asperiores delectus natus nisi recusandae laudantium fugiat! Temporibus accusantium</p>
+            <p>officia veniam voluptas quod ut. Similique nostrum fugit necessitatibus ratione labore aliquid. Dolorem perferendis accusantium adipisci at facilis libero enim eum consectetur, voluptatibus doloribus natus, fugit quidem vel delectus veniam. Assumenda inventore qui est recusandae ab modi. Fugiat quidem earum eveniet, alias exercitationem porro itaque quasi voluptatem nulla incidunt numquam fugit! Blanditiis facilis facere fuga omnis a quod, beatae voluptates necessitatibus modi. Nobis, fuga. Impedit odit error tempore ex voluptate similique consectetur sint? Minima id deserunt excepturi quo enim eius!</p> 
+            <h1 style="text-align: right;" class="secondary-text-color"> HAVE A SECOND LOOK ON OUR TRIP. </h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora, voluptatibus. Vero, animi amet aperiam quibusdam odio ut quisquam, eum temporibus, dolorem explicabo iste aliquid minima dolores. Necessitatibus distinctio minima ut esse accusamus facilis aliquam, eos saepe, numquam aut ullam. Necessitt dignissimos reiciendis quo. Fugit a voluptatum exercitationem consequatur excepturi sit, recusandae ipsa rem fugiat, repudiandae, molestias harum earum nostrum? Delectus impedit fugiat esse quo placeat, saepe accusamus ad consequatur nemo, vitae iste optio minus ut sed modi dicta! Aliquam magni, voluptates accusantium iste nulla placeat obcaecati optio repellendus architecto possimus debitis aperiam tempora veniam, facere ratione ea blanditiis itaque harum unde ex. Ipsam tempora, saepe quis sequi, veniam corrupti odio ratione nesciunt beatae architecto sed quia eveniet error repellat perspiciatis. Quisquam beatae dolores explicabo ad necessitatibus recusandae provident veniam deleniti est sequi cumque amet tempora laborum, numquam eveniet. Ipsum, soluta totam magnam neque esse doloribus nesciunt. Magni ab, quidem eum sint quam amet? Excepturi vitae similique porro nostrum! Eligendi corporis repudiandae magni iusto, ratione dolore, vel consequatur ab cupiditate sunt nobis, reiciendis quo atque totam animi provident adipisci veniam voluptas dolores est alias doloremque? Non excepturi sapiente vitae quis ipsum unde repellendus mollitia reprehenderit, ipsa accusamus blanditiis voluptate rerum tempore ad facilis distinctio sint ab voluptatibus, praesentium explicabo cumque voluptas, culpa vel alias. Qui modi nulla ratione, iste amet de expedita perferendis deleniti, laudantium vel incidunt architecto, suscipit minus reiciendis, magnam aliquam? Voluptas omnis quis eligendi mollitia fugit excepturi, dicta molestias libero iusto illum possimus, magni est in repellat quam perferendis! Dolore fuga perspiciatis id enim autem officiis porro, atque nisi adipisci, deleniti repellendus animi. Repudiandae voluptates culpa obcaecati rerum! Quae magni, consequatur dolorem nulla est nihil nobis culpa enim quo incidunt necessitatibus, e vero enim labore quo voluptates sapiente natus expedita praesentium vitae tempore, consectetur et voluptas officia hic, repellendus neque, exercitationem voluptatem. Necessitatibus velit animi repudiandae hic eius. Et consequuntur vero suscipit non eligendi officiis repellat voluptates. ?</p>
+        </div>
+            
+    </main>
+    <div id="back-up">
+        <a href="#title"></a>
+    </div>
+    <footer>
+        <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt distinctio doloremque eos. Ex nesciunt, autem quod vitae tenetur enim minus distinctio, corrupti, tempora aliquam dolorem itaque voluptate earum dolor iusto? Voluptate, quaeplicabo repellat aliquam consequuntur voluptates, rem ipsum aspernatur ipsa facilis quo quisquam excepturi pariatur facere culpa nisi! Assumenda, illum eveniet eaque in repudiandae soluta?</p><br>
+        <p><cite>copyright @2023. Cite-Timw</cite> </p>
+    </footer>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+<script>
+    
+    const nav = document.querySelector("nav")
+    //gsap animations
+    const firstImage = document.querySelector("#about img")
+    // firstImage.addEventListener("mouseover", ()=>{
+    //     console.log("YEP");
+    // })
+    gsap.fromTo(firstImage, 
+        {x: "-50vw", ease: "power1", delay: 1, duration: 4},
+        {x: "0vw"}
+    )
+
+
+    // afficher la div back-up
+    const backUp = document.querySelector("#back-up")
+    
+    window.addEventListener("scroll", ()=>{
+        const navVisible = nav.offsetHeight >= window.pageYOffset;
+        // console.log(backUp.style
+        backUp.style.display = 'none'
+        if (!navVisible) {
+            nav.style
+            backUp.style.display = ''
+        }
+    })
+
+    const backUpLink = document.querySelector("#back-up a")
+    backUp.addEventListener("click", ()=>{
+        backUpLink.click()
+    })
+
+
+    // suivi du curseur
+    const curseur = document.querySelector("#mouse-suiveur")
+        document.body.addEventListener("mouseover", function(e){
+            curseur.style.left = e.clientX + "px";
+            curseur.style.top = e.clientY + "px";
+        }
+    )
+
+    // const sectionSlider = document.querySelector("#slider")
+    // gsap.to(sectionSlider, 
+    //     { x : "110vw", repeat: -1, duration: 5, ease: "ease-in"}
+    // )
+
+
+    var splide = new Splide( '.splide', {
+        autoplay: true,
+        rewind: true,
+        rewindSpeed: 1000,
+        padding: '2rem',
+        arrows: false,
+        wheel: true
+    } );
+
+    splide.mount();
+
+</script>
+</html>
